@@ -1,0 +1,5 @@
+sqlalchemy==1.4.47
+flask-cors
+flask
+pymysql==1.0.3
+python-dotenv==1.0.0
