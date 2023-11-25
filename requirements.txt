@@ -1,4 +1,4 @@
-sqlalchemy==1.4.47
+sqlalchemy==2.0.19
 flask-cors
 flask
 pymysql==1.0.3

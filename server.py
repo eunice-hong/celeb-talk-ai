@@ -1,7 +1,7 @@
 import dotenv
 import json
 import os
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, text
 from flask import Flask, request, jsonify
 from flask_cors import CORS
 
@@ -48,10 +48,11 @@ def kanye_bot():
         # Run the query
         with engine.connect() as eng:
             db_name = os.getenv("MINDSDB_DB_NAME")
-            query = eng.execute(f"SELECT response from mindsdb.{db_name} WHERE author_username='eunice' AND text= '{message}';")
+            query_text = f"SELECT response from mindsdb.{db_name} WHERE author_username='eunice' AND text= '{message}';"
+            query = eng.execute(text(query_text))
             results = []
             for row in query:
-                row_dict = dict(row)
+                row_dict = list(row)[0].strip('\"')
                 results.append(row_dict)
 
             # Create a dictionary to store the results

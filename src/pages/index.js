@@ -26,7 +26,7 @@ function iMessage() {
     }).then((response) => {
         console.log(response);
         // Update messages and setKanyeTyping to false when you receive the response
-        const botResponse = { user: false, text: response.data.results[0].response };
+        const botResponse = { user: false, text: response.data.results[0] };
         setMessages([...messages, newMessage, botResponse]);
         setKanyeTyping(false);
     }).catch((error) => {
